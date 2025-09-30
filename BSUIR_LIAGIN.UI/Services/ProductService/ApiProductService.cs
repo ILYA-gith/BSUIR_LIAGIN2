@@ -98,12 +98,12 @@ namespace BSUIR_LIAGIN.UI.Services.ProductService
                 // Заполняем обязательные технические поля
                 if (formFile != null)
                 {
-                    var imageUrl = await _fileService.SaveFileAsync(formFile); // обычно абсолютный URL
+                    var imageUrl = await _fileService.SaveFileAsync(formFile); // абсолютный URL
                     if (!string.IsNullOrEmpty(imageUrl))
                     {
-                        // Сохраняем в БД относительный путь: Images/xxx.ext
+                        // Сохраняем в БД относительный путь
                         var relative = new Uri(imageUrl).LocalPath.TrimStart('/');
-                        product.Image = relative; // e.g., Images/abc.jpg
+                        product.Image = relative; 
                         product.ImageMimeType = formFile.ContentType;
                     }
                 }
@@ -113,9 +113,9 @@ namespace BSUIR_LIAGIN.UI.Services.ProductService
                     product.ImageMimeType = "image/jpeg";
                 }
 
-                // Важно: CategoryId должен быть заполнен до вызова API.
+ 
                 // На странице Create мы выставляем product.CategoryId = выбранной категории.
-                // Навигационное свойство Category отправлять не нужно.
+
                 product.Category = null;
 
                 var response = await _httpClient.PostAsJsonAsync("books", product, _serializerOptions);
