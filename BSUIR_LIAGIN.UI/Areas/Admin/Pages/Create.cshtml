@@ -1,0 +1,42 @@
+﻿@page
+@model BSUIR_LIAGIN.UI.Pages.Books.CreateModel
+@{
+    ViewData["Title"] = "Создание книги";
+}
+
+<h1>Создание книги</h1>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label asp-for="Book.Name" class="form-label"></label>
+        <input asp-for="Book.Name" class="form-control" />
+        <span asp-validation-for="Book.Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Book.Description" class="form-label"></label>
+        <input asp-for="Book.Description" class="form-control" />
+        <span asp-validation-for="Book.Description" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Book.Price" class="form-label"></label>
+        <input asp-for="Book.Price" class="form-control" />
+        <span asp-validation-for="Book.Price" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Категория</label>
+        <select asp-for="Book.Category.Id" asp-items="Model.Categories" class="form-select"></select>
+        <span asp-validation-for="Book.Category.Id" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Image" class="form-label">Изображение</label>
+        <input asp-for="Image" type="file" class="form-control" />
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Создать</button>
+    <a asp-page="./Index" class="btn btn-secondary">Назад к списку</a>
+</form>

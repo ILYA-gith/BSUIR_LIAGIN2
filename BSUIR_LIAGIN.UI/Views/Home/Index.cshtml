@@ -1,0 +1,79 @@
+﻿@{
+ViewBag.Title = "Index";
+}
+   
+    <main class="container">
+            <main class="container">
+                <form method="post" action="#" class="container mt-4">
+                    <h1 class="mb-4">Контрольная работа №1</h1>
+
+                    <!-- Выпадающий список -->
+                    <div class="row mb-3">
+                        <label for="dropdown" class="col-sm-2 col-form-label">Выбор:</label>
+                        <div class="col-sm-10">
+                            <select class="form-select" id="dropdown" name="dropdown">
+                                <option value="item1">Item 1</option>
+                                <option value="item2">Item 2</option>
+                                <option value="item3">Item 3</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Чекбоксы -->
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Чек-боксы:</label>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="checkbox1" id="checkbox1" value="1">
+                                <label class="form-check-label" for="checkbox1">Чек-бокс 1</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="checkbox2" id="checkbox2" value="2">
+                                <label class="form-check-label" for="checkbox2">Чек-бокс 2</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Радио-кнопки -->
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Радио:</label>
+                        <div class="col-sm-10 d-flex gap-3 flex-wrap">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="radioGroup" id="radio1" value="1" checked>
+                                <label class="form-check-label" for="radio1">Радио-1</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="radioGroup" id="radio2" value="2">
+                                <label class="form-check-label" for="radio2">Радио-2</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="radioGroup" id="radio3" value="3">
+                                <label class="form-check-label" for="radio3">Радио-3</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поля ввода -->
+                    <div class="row mb-3">
+                        <label for="login" class="col-sm-2 col-form-label">Логин:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="login" name="login" placeholder="Введите имя" value="user@mail.ru">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="password" class="col-sm-2 col-form-label">Пароль:</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Введите пароль">
+                        </div>
+                    </div>
+
+                    <!-- Кнопка отправки -->
+                    <div class="row mb-3">
+                        <div class="offset-sm-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary">Отправить</button>
+                        </div>
+                    </div>
+                </form>
+            </main>
+    </main>
+ 

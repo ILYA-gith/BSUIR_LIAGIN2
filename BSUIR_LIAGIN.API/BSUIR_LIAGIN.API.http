@@ -1,0 +1,6 @@
+@BSUIR_LIAGIN.API_HostAddress = http://localhost:5113
+
+GET {{BSUIR_LIAGIN.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

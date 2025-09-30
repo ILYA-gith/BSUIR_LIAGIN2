@@ -1,0 +1,40 @@
+﻿@inject BSUIR_LIAGIN.Domain.Entities.UriData UriData
+
+<!-- Ссылка на корзину -->
+<a asp-controller="Cart" asp-action="Index" class="navbar-text ms-auto">
+    @await Component.InvokeAsync("Cart")
+    <i class="fa-solid fa-cart-shopping"></i>
+</a>
+
+<!-- Выпадающее меню пользователя -->
+<div class="dropdown ms-4 nav-color">
+    <button class="btn btn-secondary dropdown-toggle"
+            type="button" id="dropdownMenuButton"
+            data-bs-toggle="dropdown" aria-expanded="false">
+        user@gmail.com
+        <img src="@($"{UriData.StaticUri.TrimEnd('/')}/images/default-profile-picture.png")"
+             width="30"
+             alt="User"
+             class="rounded nav-color" />
+
+    </button>
+
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li>
+            <span class="dropdown-item-text">
+                <img src="@($"{UriData.StaticUri.TrimEnd('/')}/images/default-profile-picture.png")"
+                     width="30"
+                     alt="User"
+                     class="rounded nav-color" />
+
+                user@gmail.com
+            </span>
+        </li>
+        <li><hr class="dropdown-divider" /></li>
+        <li>
+            <form asp-controller="Account" asp-action="LogOut" method="post" class="form-inline">
+                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+            </form>
+        </li>
+    </ul>
+</div>

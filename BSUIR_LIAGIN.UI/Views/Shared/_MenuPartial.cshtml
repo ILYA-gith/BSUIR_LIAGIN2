@@ -1,0 +1,13 @@
+﻿﻿@{
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString()?.ToLower() ?? "";
+}
+
+<a asp-controller="Home" asp-action="Index" class="navbar-brand">
+    СППР: <span class="badge bg-info text-dark">КР1</span>
+</a>
+
+<div class="navbar-nav">
+    <a asp-controller="Home" asp-action="Index" class="nav-item nav-link @(controller == "home" ? "active" : "")">КР 1</a>
+    <a asp-controller="Product" asp-action="Index" class="nav-item nav-link @(controller == "product" ? "active" : "")">Каталог</a>
+    <a asp-controller="Admin" asp-action="Index" class="nav-item nav-link @(controller == "admin" ? "active" : "")">Администрирование</a>
+</div>

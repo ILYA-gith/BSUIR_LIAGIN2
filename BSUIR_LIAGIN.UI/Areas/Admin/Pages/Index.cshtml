@@ -1,0 +1,77 @@
+﻿@page
+@model BSUIR_LIAGIN.UI.Areas.Admin.Pages.Books.IndexModel
+
+<h1>Книги (админка)</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-success">
+        <i class="bi bi-plus-circle"></i> Добавить книгу
+    </a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Название</th>
+            <th>Описание</th>
+            <th>Категория</th>
+            <th>Цена</th>
+            <th>Изображение</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Books)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>@item.Category?.Name</td>
+                <td>@item.Price</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.Image))
+                    {
+                        <img src="@item.Image" alt="cover" style="max-height:80px;" />
+                    }
+                </td>
+                <td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">
+                        <i class="bi bi-pencil"></i> Редактировать
+                    </a>
+                    <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">
+                        <i class="bi bi-eye"></i> Подробнее
+                    </a>
+                    <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">
+                        <i class="bi bi-trash"></i> Удалить
+                    </a>
+                </td>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Пагинация -->
+@if (Model.TotalPages > 1)
+{
+    <nav>
+        <ul class="pagination">
+            <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
+                <a class="page-link" asp-route-pageNo="@(Model.CurrentPage - 1)">Назад</a>
+            </li>
+
+            @for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                    <a class="page-link" asp-route-pageNo="@i">@i</a>
+                </li>
+            }
+
+            <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
+                <a class="page-link" asp-route-pageNo="@(Model.CurrentPage + 1)">Вперёд</a>
+            </li>
+        </ul>
+    </nav>
+}
