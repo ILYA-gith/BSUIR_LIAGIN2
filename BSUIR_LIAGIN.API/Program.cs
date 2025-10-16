@@ -8,16 +8,16 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
-// Подключаем EF Core
+// EF Core
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("Default")));
 
-// DI для сервисов
+// DI 
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddHttpContextAccessor();
 
-//  Добавляем CORS (чтобы UI мог слать POST с файлами)
+//  CORS 
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
@@ -41,14 +41,14 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-//  Включаем CORS до авторизации
+
 app.UseCors("AllowAll");
 
 app.UseAuthorization();
 
 await DbInitializer.SeedData(app);
 
-// Маршрутизация контроллеров
+
 app.MapControllers();
 
 app.Run();
